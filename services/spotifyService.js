@@ -48,12 +48,11 @@ function getUser() {
         console.log('Error: No spotify access token loaded');
         return;
     }
-    var encoded = access_token
+    var encoded = access_token;
     var options = {
         url: "https://api.spotify.com/v1/me",
         method: "GET",
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Bearer " + encoded
         }
     };
@@ -92,7 +91,6 @@ module.exports = {
             url: "https://api.spotify.com/v1/users/" + user.id + "/playlists/" + config.spotify.playlistId + "/tracks?uris=" + trackUri,
             method: "POST",
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer " + encoded
             }
         };
