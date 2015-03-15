@@ -13,6 +13,7 @@ var actions = [
     'getSubs',
     'jira',
     spotifyService ? 'song' : null,
+    spotifyService ? 'songEnqueue' : null,
     'taco',
     'tacoCounter',
     'funding'

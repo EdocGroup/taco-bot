@@ -1,6 +1,7 @@
 "use strict";
 
 var spotifyService = require('../services/spotifyService.js');
+var events = require('../services/events.js');
 
 var songAction = {
     command: '!taco-song:',
@@ -12,6 +13,7 @@ var songAction = {
         var track = songData[1].trim();
         var result = spotifyService.query(artist, track).then(function (result) {
             if (result) {
+                events.emit('song-search-found', result);
                 return 'The following song exists on spotify: `' + result.artist + ' - ' + result.track +'`';
             }
             return 'Sorry, no results for that song =[';
