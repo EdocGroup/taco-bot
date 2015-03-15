@@ -14,9 +14,13 @@ function saveTacos() {
 
 function loadTacos() {
     try {
-        counts = JSON.parse(fs.readFileSync(file, 'utf8'));
+        if (fs.existsSync(file)) {
+            counts = JSON.parse(fs.readFileSync(file, 'utf8'));
+        } else {
+            saveTacos();
+        }
     } catch (e) {
-        counts = [];
+        console.log(e);
     }
     return counts;
 }

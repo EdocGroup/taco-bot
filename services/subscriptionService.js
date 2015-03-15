@@ -14,9 +14,13 @@ function saveSubs() {
 
 function loadSubs() {
     try {
-        subs = JSON.parse(fs.readFileSync(file, 'utf8'));
+        if (fs.existsSync(file)) {
+            subs = JSON.parse(fs.readFileSync(file, 'utf8'));
+        } else {
+            saveSubs();
+        }
     } catch (e) {
-        subs = [];
+        console.log(e);
     }
     return subs;
 }
