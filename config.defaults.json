@@ -1,0 +1,11 @@
+{
+    "jiraUrl": "https://COMPANY_HERE.atlassian.net/browse/",
+    "slackToken": "SLACK_TOKEN_HERE",
+    "githubToken": "GITHUB_TOKEN_HERE",
+    "spotify": {
+        "clientID": "",
+        "clientSecret": "",
+        "refreshToken": "",
+        "playlistId": ""
+    }
+}

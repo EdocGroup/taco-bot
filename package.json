@@ -10,7 +10,9 @@
   "license": "",
   "dependencies": {
     "github": "^0.2.3",
-    "slack-client": "^1.4.0",
-	"node-fs": "^0.1.7"
+    "node-fs": "^0.1.7",
+    "request": "^2.53.0",
+    "request-promise": "^0.4.0",
+    "slack-client": "^1.4.0"
   }
 }

@@ -2,6 +2,7 @@ var Slack = require('slack-client');
 var fs = require('fs');
 var config = require('./config.js');
 var githubService = require('./services/githubService.js');
+var spotifyService = config.spotify ? require('./services/spotifyService.js') : null;
 
 var actions = [
     'help',
@@ -11,10 +12,11 @@ var actions = [
     'shutup',
     'getSubs',
     'jira',
+    spotifyService ? 'song' : null,
     'taco',
     'tacoCounter',
     'funding'
-].map(function (action) {
+].filter(function (action) { return action; }).map(function (action) {
     return require('./actions/' + action + '.js');
 });
 
@@ -75,7 +77,16 @@ slack.on('message', function(message) {
                         channel: channel
                     });
                     if (response) {
-                        channel.send(response);
+                        if (response.then) {
+                            // it's a promise
+                            response.then(function(result) {
+                                channel.send(result);
+                            }).catch(function(error) {
+                                console.log(error);
+                            });
+                        } else {
+                            channel.send(response);
+                        }
                     }
                 }
             } catch (e) {
