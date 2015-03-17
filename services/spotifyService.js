@@ -36,7 +36,7 @@ function loadTokens(refresh_token) {
         }
 
         setTimeout(function () {
-            loadTokens(config.refreshToken);
+            loadTokens(config.spotify.refreshToken);
         }, Number(result.expires_in) * 0.9 * 1000);
 
         return result;
