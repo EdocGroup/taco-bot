@@ -3,7 +3,7 @@
 var config = require('../config.js');
 
 var jiraLinkAction = {
-    command: /(((HC|HCRT|HJ|HJobs)-)|(HJ |HJobs )([0-9]+))/ig,
+    command: /(H([C,J,R,T]+)-([0-9]+))/ig,
     helpDisplayCommand: '<jira-issue>',
     description: 'Links JIRA issues matching the mentioned issue.',
     perform: function (options) {
@@ -17,5 +17,6 @@ var jiraLinkAction = {
         return response;
     }
 }
+
 
 module.exports = jiraLinkAction;
