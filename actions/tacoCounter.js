@@ -8,6 +8,7 @@ var tacoCounterAction = {
     description: 'Lists taco leaderboards.',
     perform: function (options) {
         var result = tacoService.getTacos()
+			.sort(function (a,b) { return a.Count > b.Count ? -1 : a.Count < b.Count ? 1 : 0;})
             .map (function (entry, i) {
                 return (i+1) + '. ' + entry.Name + ': ' + entry.Count;
             });
