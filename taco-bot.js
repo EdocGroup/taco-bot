@@ -3,6 +3,7 @@ var fs = require('fs');
 var config = require('./config.js');
 var githubService = require('./services/githubService.js');
 var spotifyService = config.spotify ? require('./services/spotifyService.js') : null;
+var blacklistService = require('./services/blacklistService.js');
 
 var actions = [
     'help',
@@ -16,6 +17,7 @@ var actions = [
     spotifyService ? 'songEnqueue' : null,
     'taco',
     'tacoCounter',
+    'blacklist',
     'funding'
 ].filter(function (action) { return action; }).map(function (action) {
     return require('./actions/' + action + '.js');
@@ -67,16 +69,23 @@ slack.on('message', function(message) {
     user = slack.getUserByID(message.user);
     response = '';
     type = message.type, ts = message.ts, text = message.text;
+    
     if (type === 'message' && (text != null) && (channel != null)) {
         actions.some(function (action) {
             try {
                 if ((action.command instanceof RegExp) ? text.match(action.command) : (text.indexOf(action.command) !== -1)) {
-                    var response = action.perform({
-                        message: message,
-                        actions: actions,
-                        user: user,
-                        channel: channel
-                    });
+                    var response;
+                    if (blacklistService.isBlacklisted(user.name)) {
+                        response = "`Error: User " + user.name + " is banned from taco-bot. Please contact your local taco-administrator.`";
+                    } else {
+                        response = action.perform({
+                            message: message,
+                            actions: actions,
+                            user: user,
+                            channel: channel,
+                            slack: slack
+                        });
+                    }
                     if (response) {
                         if (response.then) {
                             // it's a promise
