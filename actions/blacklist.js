@@ -15,7 +15,7 @@ var blacklistAction = {
         if (admins.indexOf(options.user.name) !== -1) {
             var match = (options.message.text || '').match(blacklistAction.command);
             var target = match[1] || null;
-            var targetUser = target ? options.slack.getUserByID(target) : false;
+            var targetUser = target ? options.slack.getUserByName(target) : false;
             if (targetUser) {
                 var blacklisted = blacklistService.toggleUser(targetUser.name);
                 if (blacklisted) {
