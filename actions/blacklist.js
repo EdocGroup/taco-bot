@@ -24,7 +24,7 @@ var blacklistAction = {
                     return '`' + targetUser.name + ' is no longer banned.`';
                 }
             } else {
-                return '`Username ' + target ' was not found.`';
+                return '`Username ' + target + ' was not found.`';
             }
         }
         return '`' + options.user.name + ' is not allowed to perform the taco-blacklist command.`';
