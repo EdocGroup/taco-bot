@@ -3,7 +3,7 @@ var fs = require('fs');
 var config = require('./config.js');
 var githubService = require('./services/githubService.js');
 var spotifyService = config.spotify ? require('./services/spotifyService.js') : null;
-var blacklistService = require('../services/blacklistService.js');
+var blacklistService = require('./services/blacklistService.js');
 
 var actions = [
     'help',
