@@ -70,7 +70,7 @@ slack.on('message', function(message) {
     response = '';
     type = message.type, ts = message.ts, text = message.text;
     
-    if (type === 'message' && (text !== null) && (channel !== null)) {
+    if (type === 'message' && (text != null) && (channel != null)) {
         actions.some(function (action) {
             try {
                 if ((action.command instanceof RegExp) ? text.match(action.command) : (text.indexOf(action.command) !== -1)) {
