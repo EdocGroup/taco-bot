@@ -21,8 +21,7 @@ var actions = [
     'blacklist',
     'funding',
 	'buildPR',
-	'deployPR',
-	'updateServer'
+	'deployPR'	
 ].filter(function (action) { return action; }).map(function (action) {
     return require('./actions/' + action + '.js');
 });
