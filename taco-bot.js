@@ -9,6 +9,7 @@ var actions = [
     'help',
     'pullRequest',
     'pullRequestUser',
+	'pullRequestNumber',
     'listen',
     'shutup',
     'getSubs',
@@ -18,7 +19,10 @@ var actions = [
     'taco',
     'tacoCounter',
     'blacklist',
-    'funding'
+    'funding',
+	'buildPR',
+	'deployPR',
+	'updateServer'
 ].filter(function (action) { return action; }).map(function (action) {
     return require('./actions/' + action + '.js');
 });
