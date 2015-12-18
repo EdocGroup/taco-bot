@@ -6,10 +6,11 @@ var helpAction = {
     perform: function (options) {
         var result =  ['Taco Bot Help!']
             .concat(options.actions.map(function (action) {
-                return (action.helpDisplayCommand || action.command) + ' - ' + action.description;
+              if(action.helpDisplayCommand != null)
+                return (action.helpDisplayCommand || action.command) + ' - ' + action.description + '\n';
             }));
 
-        return '```' + result.join('\n') + '```';
+        return '```' + result.join('') + '```';
     }
 };
 
