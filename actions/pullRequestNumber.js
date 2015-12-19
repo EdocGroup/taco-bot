@@ -3,11 +3,11 @@
 var githubService = require('../services/githubService.js');
 var config = require('../config.js');
 
-
+var url = "http://ci.edoc.ca:8080/job/PullRequest/buildWithParameters?token=" + config.JenkinsToken + "&ghprbPullId=";
 
 var pullRequestNumberAction = {
     command: '!PR#:',
-    'helpDisplayCommand: !PR#:<#>',
+    helpDisplayCommand: '!PR#:<#>',
     description: 'Gets you more info about the pr#.',
     perform: function (options) {
         return githubService.getOpenPullRequests()
