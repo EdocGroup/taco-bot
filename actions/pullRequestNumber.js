@@ -7,7 +7,7 @@ var config = require('../config.js');
 
 var pullRequestNumberAction = {
     command: '!PR#:',
-    helpDisplayCommand: !PR#:<#>',
+    'helpDisplayCommand: !PR#:<#>',
     description: 'Gets you more info about the pr#.',
     perform: function (options) {
         return githubService.getOpenPullRequests()
