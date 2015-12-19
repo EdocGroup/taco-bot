@@ -7,10 +7,10 @@ var helpAction = {
         var result =  ['Taco Bot Help!']
             .concat(options.actions.map(function (action) {
               if(action.helpDisplayCommand != null)
-                return (action.helpDisplayCommand || action.command) + ' - ' + action.description + '\n';
+                return ('\n' + action.helpDisplayCommand || action.command) + ' - ' + action.description;
             }));
 
-        return '```' + result.join('\n') + '```';
+        return '```' + result.join('') + '```';
     }
 };
 
