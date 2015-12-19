@@ -10,7 +10,7 @@ var helpAction = {
                 return (action.helpDisplayCommand || action.command) + ' - ' + action.description + '\n';
             }));
 
-        return '```' + result.join('') + '```';
+        return '```' + result.join('\n') + '```';
     }
 };
 
