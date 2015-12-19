@@ -7,5 +7,6 @@
         "clientSecret": "",
         "refreshToken": "",
         "playlistId": ""
-    }
+    },
+	"JenkinsToken":""
 }
