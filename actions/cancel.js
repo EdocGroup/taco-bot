@@ -12,12 +12,9 @@ var cancelUpdateServerAction = {
 
        return '```' + output + '```';
 
-
-//return '```' + output.join('') + '```';
 	}
 };
 
 
 module.exports = cancelUpdateServerAction;
 
-//!Update-Server:RC:7.0.12.83

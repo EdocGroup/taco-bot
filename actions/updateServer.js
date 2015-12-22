@@ -18,8 +18,6 @@ var updateServerAction = {
 
        return '```' + output[0] + '\n' + output[1] + '\n' + output[2] + '\n' + output[3] + '\n' + '```' + '\n' + '```' + 'executing command' + '\n' + result + '```';
 
-
-//return '```' + output.join('') + '```';
 	}
 };
 
@@ -57,4 +55,3 @@ return result;
 }
 module.exports = updateServerAction;
 
-//!Update-Server:RC:7.0.12.83
