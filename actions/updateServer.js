@@ -25,31 +25,17 @@ var updateServerAction = {
  function executeUpdateScript(server, revision) {
 
 
- console.log("entering executeUpdateScript function");
-
  var major = revision.split('.')[0];
  var minor = revision.split('.')[1];
  var build = revision.split('.')[2];
  var rev = revision.split('.')[3];
  var wipe = revision.split('.')[4];
-
-  var output = [
-        "Server: " + server,
-        "Revision: " + revision,
-        "Major: " + major,		
-		"Minor: " + minor,		
-		"Build: " + build,		
-		"Rev: " + rev,		
-
-    ];	
 	
 var result = ("powershell.exe -ExecutionPolicy unrestricted -Command \" & 'tools\\Install-ReleaseCandidate.ps1' -Server '" + server + "' -Major '" + major + "' -Minor '" + minor +  "' -Build '" + build + "' -Revision '" + rev + "' -Wipe '" + wipe + "'\" " );
+
 var child = require('child_process').exec("powershell.exe -ExecutionPolicy unrestricted -Command \" & 'tools\\Install-ReleaseCandidate.ps1' -Server '" + server + "' -Revision '" + rev + "' -Build '" + build + "' -Major '" + major + "' -Minor '" + minor + "' -Wipe '" + wipe + "'\" " );
+
 child.stdout.pipe(process.stdout);
-
-console.log(output);
-
-console.log("exiting executeUpdateScript function");
 
 return result;
 }
