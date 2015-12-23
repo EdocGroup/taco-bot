@@ -4,6 +4,7 @@ var githubService = require('../services/githubService.js');
 var config = require('../config.js');
 
 var url = "http://ci.edoc.ca:8080/job/PullRequest/buildWithParameters?token=" + config.JenkinsToken + "&ghprbPullId=";
+var url2 = "http://ci.edoc.ca:8080/job/Selgrid(multi)/buildWithParameters?token=" + config.JenkinsToken + "&ghprbPullId=";
 
 var pullRequestNumberAction = {
     command: '!PR#:',
@@ -30,7 +31,8 @@ function prettyPrint(pullRequest) {
         output.push("Jira Link: " + config.jiraUrl + titleMatch[0].trim().toUpperCase());
 	
     }
-		output.push("Click TO Trigger Build: " + url + pullRequest.Number);
+		output.push("Click to trigger a fresh build of : " + url + pullRequest.Number);
+        output.push("Click to redeploy the latest build of : " + url2 + pullRequest.Number);
 	return '```' + output.join('\n') + '```\n';
 }
 

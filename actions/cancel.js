@@ -2,7 +2,7 @@
 
 var cancelUpdateServerAction = {
     command: '!Cancel',
-    helpDisplayCommand: '!Cancel // ths must be used immediately after !Update-Server',
+    helpDisplayCommand: '!Cancel // this must be used immediately after !Update-Server',
     description: 'Stops install-releasecandidate.ps1 from continuing its deploy.',
     perform: function (options) {
     	
