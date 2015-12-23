@@ -23,7 +23,8 @@ var actions = [
 	'buildPR',
 	'deployPR',
     'updateServer',
-    'cancel'
+    'cancel',
+    'restartService'
 ].filter(function (action) { return action; }).map(function (action) {
     return require('./actions/' + action + '.js');
 });
