@@ -11,8 +11,7 @@ var updateServerAction = {
 				   var revision = invoke.split(":")[1];
 				   var output = [   "Updating Server",
 									"Server: " + server, 
-									"With Revision: " + revision,
-									"If you want to stop this process... (quickly type !Cancel)"
+									"With Revision: " + revision									
 								];										
 			var result = executeUpdateScript(server,revision);				               	
 
