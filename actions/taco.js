@@ -12,8 +12,9 @@ const tacoAction = {
         if(targetUser){
             const tacos = tacoService.incrementTacos(targetUser.name);
             return `\`${targetUser.name} now has ${tacos} tacos!\``;
+        } else {
+            return `\`No user ${target}\``;
         }
-        return null;
     }
 };
 
