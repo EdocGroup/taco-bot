@@ -18,7 +18,8 @@ var actions = [
     'taco',
     'tacoCounter',
     'blacklist',
-    'funding'
+    'funding',
+    'customer'
 ].filter(function (action) { return action; }).map(function (action) {
     return require('./actions/' + action + '.js');
 });
