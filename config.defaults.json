@@ -2,6 +2,14 @@
     "jiraUrl": "https://COMPANY_HERE.atlassian.net/browse/",
     "slackToken": "SLACK_TOKEN_HERE",
     "githubToken": "GITHUB_TOKEN_HERE",
+    "confluence": {
+        "user": "confluence username",
+        "pass": "confluence password"
+    },
+    "customerChannels": [
+        "channel names you want",
+        "customer info posted in"
+    ],
     "spotify": {
         "clientID": "",
         "clientSecret": "",
