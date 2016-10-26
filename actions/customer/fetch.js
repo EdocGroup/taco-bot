@@ -16,7 +16,7 @@ const htmlToTextOptions = {
     ignoreHref: true
 };
 
-const headers = '<tr><td>Link</td><td>Name</td><td>Licenses</td><td>% of Vessels Active</td><td>Status</td></tr>';
+const headers = '<tr><td>Link</td><td>Name</td><td>NPS</td><td>Licenses</td><td>% of Vessels Active</td><td>Status</td></tr>';
 
 request(customerInfoPageUrl, {
     auth: require('../../config.json').confluence,

@@ -91,7 +91,9 @@ slack.on('message', function(message) {
                         if (response.then) {
                             // it's a promise
                             response.then(function(result) {
-                                channel.send(result);
+                                if(result){
+                                    channel.send(result);
+                                }
                             }).catch(function(error) {
                                 console.log(error);
                             });

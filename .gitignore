@@ -2,3 +2,4 @@ data/*
 config.json
 node_modules/*
 actions/customer/customers.json
+actions/customer/logs.json
