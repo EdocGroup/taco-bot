@@ -17,7 +17,7 @@ github.authenticate({
 });
 
 function getDemIssues() {
-    console.log("Getting Github issues...");
+    //console.log("Getting Github issues...");
     github.issues.repoIssues({
         repo: "helmnext",
         user: "EdocGroup",

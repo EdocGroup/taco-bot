@@ -76,7 +76,7 @@ slack.on('message', function(message) {
             try {
                 if ((action.command instanceof RegExp) ? text.match(action.command) : (text.indexOf(action.command) !== -1)) {
                     var response;
-                    if (blacklistService.isBlacklisted(user.name)) {
+                    if (blacklistService.isBlacklisted(user && user.name)) {
                         response = "`Error: User " + user.name + " is banned from taco-bot. Please contact your local taco-administrator.`";
                     } else {
                         response = action.perform({
@@ -95,7 +95,7 @@ slack.on('message', function(message) {
                                     channel.send(result);
                                 }
                             }).catch(function(error) {
-                                console.log(error);
+                                console.error('Error getting result from action: ', error, action);
                             });
                         } else {
                             channel.send(response);
@@ -104,7 +104,7 @@ slack.on('message', function(message) {
                 }
             } catch (e) {
                 // yolo
-                console.log(e);
+                console.error('Action error: ', e, action);
             }
         });
     } else {
@@ -114,12 +114,12 @@ slack.on('message', function(message) {
         errors = [typeError, textError, channelError].filter(function(element) {
             return element !== null;
         }).join(' ');
-        return console.log("@" + slack.self.name + " could not respond. " + errors);
+        return console.error("@" + slack.self.name + " could not respond. " + errors);
     }
 });
 
 slack.on('error', function(error) {
-    return console.error("Error: " + error);
+    return console.error("Slack error: ", error);
 });
 
 slack.login();

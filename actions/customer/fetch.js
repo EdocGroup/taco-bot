@@ -42,7 +42,7 @@ request(customerInfoPageUrl, {
 
     fs.writeFile(outputfile, JSON.stringify(customers, null, 2), err => {
         if(err){
-            console.error(err);
+            console.error(`There was an error writing ${outputfile}: `, err);
             return;
         }
         console.log(`Wrote to ${outputfile}`);
@@ -52,5 +52,5 @@ request(customerInfoPageUrl, {
         return htmlToText.fromString(`<table class="text-table">${headers}${$.html(e)}</table>`, htmlToTextOptions);
     }
 }, err => {
-    console.error(err);
+    console.error(`There was an error getting the customer page from confluence: `, err);
 });
