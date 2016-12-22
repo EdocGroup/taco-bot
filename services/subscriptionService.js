@@ -33,7 +33,7 @@ function notifySubscribed(changedPullRequests) {
             response += prettyPrint(pr);
         }
     });
-    var channel = require('../taco-bot.js').getGroupByName(group.Name);
+    var channel = require('../taco-bot.js').dataStore.getGroupByName(group.Name);
     if (channel != null)
         channel.send(response);
     });
