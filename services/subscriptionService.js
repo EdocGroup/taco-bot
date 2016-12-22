@@ -33,9 +33,10 @@ function notifySubscribed(changedPullRequests) {
             response += prettyPrint(pr);
         }
     });
-    var channel = require('../taco-bot.js').dataStore.getGroupByName(group.Name);
+    const tacobot = require('../taco-bot.js');
+    var channel = tacobot.dataStore.getGroupByName(group.Name);
     if (channel != null)
-        channel.send(response);
+        tacobot.sendMessage(response, channel.id);
     });
 }
 
