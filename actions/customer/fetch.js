@@ -16,7 +16,18 @@ const htmlToTextOptions = {
     ignoreHref: true
 };
 
-const headers = '<tr><td>Link</td><td>Invoicing</td><td>Name</td><td>NPS</td><td>Licenses</td><td>Renewal</td><td>% of Vessels Active</td><td>Status</td></tr>';
+const headers = [
+    'Link',
+    'Name',
+    'Type',
+    'Invoicing',
+    'NPS',
+    'Licenses',
+    'Renewal',
+    '% of Vessels Active',
+    'Status'
+];
+const headerRow = `<tr><td>${headers.join('</td><td>')}</td></tr>`;
 
 request(customerInfoPageUrl, {
     auth: require('../../config.json').confluence,
@@ -49,7 +60,7 @@ request(customerInfoPageUrl, {
     });
 
     function customer(e){
-        return htmlToText.fromString(`<table class="text-table">${headers}${$.html(e)}</table>`, htmlToTextOptions);
+        return htmlToText.fromString(`<table class="text-table">${headerRow}${$.html(e)}</table>`, htmlToTextOptions);
     }
 }, err => {
     console.error(`There was an error getting the customer page from confluence: `, err);
