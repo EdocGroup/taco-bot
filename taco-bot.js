@@ -38,7 +38,7 @@ slack.on('authenticated', function({ channels, groups, self, team }) {
 slack.on('message', function(message) {
     let { channel, user, text, type } = message;
     var channelError, errors, textError, typeError;
-    channel = slack.dataStore.getChannelById(channel) || slack.dataStore.getDMById(channel);
+    channel = slack.dataStore.getGroupById(channel) || slack.dataStore.getDMById(channel) || slack.dataStore.getChannelById(channel);
     user = slack.dataStore.getUserById(user);
 
     if (type === 'message' && (text != null) && (channel != null)) {
