@@ -66,7 +66,7 @@ function readFilePromise(filename){
                         fs.writeFile(filename, '{}', err => {
                             if(err){
                                 reject(err);
-                                return
+                                return;
                             }
                             resolve({});
                         });

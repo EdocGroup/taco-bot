@@ -8,7 +8,7 @@ const tacoAction = {
     description: 'Gives someone a taco.',
     perform(options) {
         const target = (options.message.text || '').match(tacoAction.command)[2] || null;
-        const targetUser = target ? options.slack.getUserByName(target) : options.user;
+        const targetUser = target ? options.slack.dataStore.getUserByName(target) : options.user;
         if(targetUser){
             const tacos = tacoService.incrementTacos(targetUser.name);
             return `\`${targetUser.name} now has ${tacos} tacos!\``;
